@@ -284,9 +284,9 @@ body {
 
 .form-control,
 .form-select {
-  background: var(--bg-dark) !important;
+  /* background: var(--bg-dark) !important; */
   border: 1px solid var(--border) !important;
-  color: var(--text-main) !important;
+  color: #198754 !important;
   border-radius: 10px;
 }
 
@@ -329,7 +329,7 @@ body {
 
 /* ─── Table ───────────────────────────────── */
 .table-dark-custom {
-  background: var(--bg-card);
+  /* background: var(--bg-card); */
   border-radius: 12px;
   overflow: hidden;
 }
@@ -346,7 +346,7 @@ body {
 }
 
 .table-dark-custom td {
-  color: var(--text-main);
+  color: #198754;
   border-bottom: 1px solid var(--border);
   padding: 0.8rem;
   vertical-align: middle;
