@@ -1,0 +1,27 @@
+## .NET Core
+bin/
+obj/
+[Ee]bug/
+[Rr]elease/
+*.user
+*.userosscache
+*.sln.docuser
+
+## Node.js / Vue
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vscode/
+
+## SQL Server (Local file)
+*.mdf
+*.ldf
+
+## OS metadata
+.DS_Store
+Thumbs.db
+
+# Documentation
+huongdan.md
+yeucau.md
