@@ -10,17 +10,17 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
       <div class="container">
-        <router-link class="navbar-brand" to="/">🛒 Mini E-Commerce</router-link>
+        <router-link class="navbar-brand" to="/">🛒 Electro shop</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <router-link class="nav-link" to="/">🏠 Trang chủ</router-link>
+              <router-link class="nav-link" to="/">Trang chủ</router-link>
             </li>
             <li class="nav-item dropdown" v-if="categories.length">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">📂 Danh mục</a>
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Danh mục</a>
               <ul class="dropdown-menu">
                 <li v-for="cat in categories" :key="cat.id">
                   <router-link class="dropdown-item" :to="`/category/${cat.id}`">{{ cat.name }}</router-link>

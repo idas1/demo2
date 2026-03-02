@@ -10,7 +10,7 @@
 
       <!-- Sort Bar -->
       <div class="sort-bar">
-        <span class="text-muted">{{ products.length }} sản phẩm</span>
+        <span class="text-white">{{ products.length }} sản phẩm</span>
         <div>
           <button :class="['btn btn-sm me-2', sortBy === '' ? 'btn-primary' : 'btn-outline-light']" @click="changeSort('')">Mặc định</button>
           <button :class="['btn btn-sm me-2', sortBy === 'price_asc' ? 'btn-primary' : 'btn-outline-light']" @click="changeSort('price_asc')">Giá tăng ↑</button>
