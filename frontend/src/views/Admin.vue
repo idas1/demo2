@@ -15,7 +15,7 @@
     <!-- ========== PRODUCTS TAB ========== -->
     <div v-if="activeTab === 'products'">
       <!-- Product Form -->
-      <div class="admin-panel mb-4">
+      <div ref="productFormPanel" class="admin-panel mb-4">
         <h3>{{ editingProduct ? '✏️ Sửa sản phẩm' : '➕ Thêm sản phẩm' }}</h3>
         <form @submit.prevent="saveProduct">
           <div class="row g-3">
@@ -25,11 +25,11 @@
             </div>
             <div class="col-md-3">
               <label class="form-label">Giá gốc *</label>
-              <input v-model.number="productForm.originalPrice" type="number" min="1" step="1000" class="form-control" required />
+              <input :value="productForm.originalPrice" @input="e => productForm.originalPrice = parseNumber(e.target.value)" type="number" min="0" step="1" class="form-control" required />
             </div>
             <div class="col-md-3">
               <label class="form-label">Giá sale</label>
-              <input v-model.number="productForm.salePrice" type="number" min="0" step="1000" class="form-control" />
+              <input :value="productForm.salePrice" @input="e => productForm.salePrice = parseNumber(e.target.value)" type="number" min="0" step="1" class="form-control" />
             </div>
             <div class="col-md-6">
               <label class="form-label">Hình ảnh</label>
@@ -131,7 +131,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, defineEmits } from 'vue'
+import { ref, onMounted, nextTick, defineEmits } from 'vue'
 import {
   getProducts, createProduct, updateProduct, deleteProduct,
   getCategories, createCategory, updateCategory, deleteCategory
@@ -139,6 +139,7 @@ import {
 
 const emit = defineEmits(['show-toast'])
 const activeTab = ref('products')
+const productFormPanel = ref(null)
 
 // ── Products ──
 const products = ref([])
@@ -148,6 +149,11 @@ const selectedFile = ref(null)
 
 const formatPrice = (price) => {
   return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price)
+}
+
+const parseNumber = (value) => {
+  const num = Number(value)
+  return isNaN(num) ? 0 : num
 }
 
 const onFileChange = (e) => {
@@ -203,6 +209,9 @@ const editProduct = (p) => {
     categoryIds: p.categories.map(c => c.id)
   }
   selectedFile.value = null
+  nextTick(() => {
+    productFormPanel.value?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  })
 }
 
 const cancelEditProduct = () => {

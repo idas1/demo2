@@ -25,7 +25,7 @@
             <img :src="product.imagePath || 'https://via.placeholder.com/300x220/1e293b/6366f1?text=' + encodeURIComponent(product.name)" :alt="product.name" />
             <div class="card-body">
               <h5 class="card-title">{{ product.name }}</h5>
-              <div v-if="product.salePrice">
+              <div v-if="product.salePrice" class="d-flex flex-wrap">
                 <span class="price-original">{{ formatPrice(product.originalPrice) }}</span>
                 <span class="price-sale ms-2">{{ formatPrice(product.salePrice) }}</span>
               </div>

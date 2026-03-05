@@ -41,7 +41,7 @@
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
-        <p>© 2024 Mini E-Commerce. Built with ❤️ using Vue 3 + ASP.NET Core</p>
+        <p>© Electro shop. Built with using Vue 3 + ASP.NET Core</p>
       </div>
     </footer>
   </div>

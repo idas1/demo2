@@ -189,7 +189,7 @@
         </div>
 
         <!-- banner QC -->
-        <section class="bannerQC my-md-5 my-2">
+        <section class="bannerQC my-md-5 my-4">
           <div class="bannerQC-content">
               <h2>Upgrade Your Setup.<br><span class="highlight">Save up to 30%.</span></h2>
               <p>Join our exclusive tech membership and get early access to flash sales and premium warranty extensions.</p>
@@ -217,7 +217,7 @@
               <img :src="product.imagePath || 'https://placehold.co/600x600' " :alt="product.name" />
               <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
-                <div v-if="product.salePrice">
+                <div v-if="product.salePrice" class="d-flex flex-wrap">
                   <span class="price-original">{{ formatPrice(product.originalPrice) }}</span>
                   <span class="price-sale ms-2">{{ formatPrice(product.salePrice) }}</span>
                 </div>
@@ -446,14 +446,17 @@ onMounted(async () => {
           }
         }
         .img-wrap {
-          -webkit-transform: scale(0) rotate(65deg);
-          transform: scale(0) rotate(65deg);
-          transition: -webkit-transform 0.5s
-            cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-            -webkit-transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          transition-delay: 0.5s;
+          
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          height: auto;
+          transform: translate(-50%, -50%);
+          @media (max-width:768px) {
+            position: unset;
+            transform: none;
+          }
         }
         @keyframes border {
           0% {
@@ -464,6 +467,12 @@ onMounted(async () => {
           }
           100% {
             border-radius: 58% 42% 38% 62% / 42% 55% 45% 58%;
+          }
+        }
+        @media (max-width:768px) {
+          min-height: auto;
+          .shape{
+            display: none;
           }
         }
       }
@@ -491,12 +500,7 @@ onMounted(async () => {
             transform: translateY(0%);
           }
         }
-        .hero-slider__item__image {
-          .img-wrap {
-            -webkit-transform: scale(1) rotate(0);
-            transform: scale(1) rotate(0);
-          }
-        }
+        
       }
     }
   }
